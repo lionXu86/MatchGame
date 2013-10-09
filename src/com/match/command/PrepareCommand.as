@@ -1,5 +1,5 @@
 package com.match.command{
-	import com.match.view.match.MatchView;
+	import com.match.view.ui.MatchView;
 	
 	import robotlegs.bender.bundles.mvcs.Command;
 	

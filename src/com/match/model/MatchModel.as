@@ -16,10 +16,6 @@ package com.match.model{
 		[Inject]
 		public var removeSignal:RemoveSignal;
 		
-		public static const MATCH_ROW:int = 7;
-		public static const MATCH_COL:int = 7;
-		public static const MATCH_TYPE:int = 5;
-		
 		private var removePointList:Array;
 		
 		private var _matchArr:Array;
@@ -58,21 +54,21 @@ package com.match.model{
 		{
 			removePointList = [];
 			//检测列
-			for (var i:int = 0; i < MATCH_COL; i++) 
+			for (var i:int = 0; i < Global.MATCH_COL; i++) 
 			{
-				for (var j:int = 0; j < MATCH_ROW - 2; j++) 
+				for (var j:int = 0; j < Global.MATCH_ROW - 2; j++) 
 				{
 					if (_matchArr[i][j] == _matchArr[i][j + 1] && _matchArr[i][j + 1]== _matchArr[i][j + 2]) //检测连续三个是否相同
 					{
 						removePointList.push(new Point(i, j), new Point(i, j + 1), new Point(i, j + 2));//坐标存入数组
-						if (j + 3 < MATCH_ROW )
+						if (j + 3 < Global.MATCH_ROW )
 						{
 							var k:int = j + 3; //判断第四个元素
 							while (_matchArr[i][j] == _matchArr[i][k]) 
 							{
 								removePointList.push(new Point(i, k));
-								if (k < MATCH_ROW - 1) k++; 
-								if (_matchArr[i][j] != _matchArr[i][k] || k == MATCH_ROW -1)
+								if (k < Global.MATCH_ROW - 1) k++; 
+								if (_matchArr[i][j] != _matchArr[i][k] || k == Global.MATCH_ROW -1)
 								{
 									if (_matchArr[i][j] == _matchArr[i][k]) removePointList.push(new Point(i, k));
 									j = k;//直到不一样 跳出 从第一个不同的位置开始继续判断
@@ -84,21 +80,21 @@ package com.match.model{
 				}
 			}
 			//检测行
-			for (j = 0; j < MATCH_ROW; j++) 
+			for (j = 0; j < Global.MATCH_ROW; j++) 
 			{
-				for (i = 0; i < MATCH_COL - 2; i++) 
+				for (i = 0; i < Global.MATCH_COL - 2; i++) 
 				{
 					if (_matchArr[i][j] == _matchArr[i + 1][j] && _matchArr[i + 1][j]== _matchArr[i + 2][j]) //检测连续三个是否相同
 					{
 						removePointList.push(new Point(i, j), new Point(i + 1, j), new Point(i + 2, j));//坐标存入数组
-						if (i + 3 < MATCH_COL )
+						if (i + 3 < Global.MATCH_COL )
 						{
 							k = i + 3; //判断第四个元素
 							while (_matchArr[i][j] == _matchArr[k][j]) 
 							{
 								removePointList.push(new Point(k, j));
-								if (k < MATCH_COL - 1) k++; 
-								if(_matchArr[i][j] != _matchArr[k][j] || k == MATCH_COL -1 )
+								if (k < Global.MATCH_COL - 1) k++; 
+								if(_matchArr[i][j] != _matchArr[k][j] || k == Global.MATCH_COL -1 )
 								{
 									if (_matchArr[i][j] == _matchArr[k][j]) removePointList.push(new Point(k, j));
 									i = k;//直到不一样 跳出 从第一个不同的位置开始继续判断
@@ -130,7 +126,7 @@ package com.match.model{
 			var num:int;
 			var tempRow:int;
 			//取消0重新调整数据并生成新的数据
-			for(i = 0; i < MATCH_COL; i++)
+			for(i = 0; i < Global.MATCH_COL; i++)
 			{
 				num = 0;
 				tempRow = -1;
@@ -140,7 +136,7 @@ package com.match.model{
 				
 				var tempArr4:Array = [];
 				//移除消除的方块,新增方块
-				for(var j:int = 0; j < MATCH_ROW; j++)
+				for(var j:int = 0; j < Global.MATCH_ROW; j++)
 				{
 					if(_matchArr[i][j] != 0)
 					{
@@ -154,7 +150,7 @@ package com.match.model{
 				var type:int;
 				while(num)
 				{
-					type = Math.floor(Math.random() * MATCH_TYPE + 1);
+					type = Math.floor(Math.random() * Global.MATCH_TYPE + 1);
 					tempArr4.push(type);
 					tempArr3.push(type);
 					num--;
@@ -178,12 +174,12 @@ package com.match.model{
 		{
 			var temp:Array = [];
 			var temp1:Array;
-			for(var i:int = 0; i < MATCH_ROW; i++)
+			for(var i:int = 0; i < Global.MATCH_COL; i++)
 			{
 				temp1 = [];
-				for(var j:int = 0; j < MATCH_COL; j++)
+				for(var j:int = 0; j < Global.MATCH_ROW; j++)
 				{
-					temp1.push(Math.floor(Math.random() * MATCH_TYPE + 1));
+					temp1.push(Math.floor(Math.random() * Global.MATCH_TYPE + 1));
 				}
 				trace(temp1);
 				temp.push(temp1);
@@ -199,10 +195,10 @@ package com.match.model{
 		{
 			var temp:Array = [];
 			var temp1:Array;
-			for(var i:int = 0; i < MATCH_ROW; i++)
+			for(var i:int = 0; i < Global.MATCH_COL; i++)
 			{
 				temp1 = [];
-				for(var j:int = 0; j < MATCH_COL; j++)
+				for(var j:int = 0; j < Global.MATCH_ROW; j++)
 				{
 					temp1.push(source[i][j]);
 				}
@@ -216,7 +212,7 @@ package com.match.model{
 		{
 			trace("--->新矩阵:");
 			var temp1:Array;
-			for(var i:int = 0; i < MATCH_COL; i++)
+			for(var i:int = 0; i < Global.MATCH_COL; i++)
 			{
 				temp1 = _matchArr[i];
 				trace(temp1);

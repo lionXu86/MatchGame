@@ -11,8 +11,8 @@ package{
 	import com.match.signal.PrepareSignal;
 	import com.match.signal.RemoveSignal;
 	import com.match.signal.StartupSignal;
-	import com.match.view.match.IMatchView;
-	import com.match.view.match.MatchMediator;
+	import com.match.view.ui.IMatchView;
+	import com.match.view.mediator.MatchMediator;
 	
 	import org.osflash.signals.Signal;
 	
