@@ -8,6 +8,8 @@ package{
 		{
 			var game:GameContextSprite = new GameContextSprite();
 			addChild(game);
+			
+			trace("sdfsdfsdfdsf");
 		}
 	}
 }
